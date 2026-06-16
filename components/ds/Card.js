@@ -18,7 +18,9 @@ export function Card({
 
   const base = {
     background: ink ? "var(--tcmc-indigo)" : tone === "sunken" ? "var(--surface-sunken)" : "var(--tcmc-paper)",
-    border: `1px solid ${ink ? "var(--border-on-ink)" : "var(--border-hair)"}`,
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: ink ? "var(--border-on-ink)" : "var(--border-hair)",
     borderRadius: "var(--radius-sm)",
     padding,
     color: ink ? "var(--tcmc-cream)" : "var(--tcmc-ink)",

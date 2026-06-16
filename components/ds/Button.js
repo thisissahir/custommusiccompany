@@ -33,7 +33,9 @@ export function Button({
     fontWeight: "var(--weight-medium)",
     textTransform: "uppercase",
     borderRadius: "var(--radius-sm)",
-    border: "1px solid transparent",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "transparent",
     cursor: disabled ? "not-allowed" : "pointer",
     opacity: disabled ? 0.4 : 1,
     transition:
