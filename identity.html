@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Custom Music Company — Identity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;1,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --indigo:#1B1F3B; --indigo-deep:#14162B;
+    --cream:#F4F0E6; --paper:#FBFAF7; --brass:#B89B5E;
+    --ink:#1B1F3B; --muted:rgba(20,22,43,.5); --faint:rgba(20,22,43,.38);
+    --hair:rgba(20,22,43,.1); --hair2:rgba(20,22,43,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
+  .wrap{max-width:980px;margin:0 auto;padding:0 40px}
+  .serif{font-family:'Spectral',Georgia,serif}
+  .eyebrow{font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--faint);font-weight:500}
+  .st{font-family:'Spectral',serif;font-weight:300;font-size:clamp(22px,3.2vw,32px);line-height:1.12;letter-spacing:-.01em;margin-top:16px}
+  .lede{color:var(--muted);max-width:54ch;margin-top:14px;font-size:14.5px;line-height:1.6}
+  section{padding:96px 0;border-top:1px solid var(--hair)}
+
+  /* hero */
+  .hero{text-align:center;padding:130px 0 110px}
+  .hero .mk{width:96px;margin:0 auto 50px}
+  .hero .name{font-family:'Spectral',serif;font-weight:200;font-size:clamp(28px,5vw,46px);letter-spacing:.01em;line-height:1.05}
+  .hero .name em{font-style:italic;font-weight:300}
+  .hero .tag{margin-top:24px;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint)}
+
+  /* draw-on */
+  .anim .s1,.anim .s2{stroke-dasharray:100;stroke-dashoffset:100;animation:draw 1.7s cubic-bezier(.65,0,.2,1) forwards}
+  .anim .s2{animation-delay:.5s}
+  .anim .ax{opacity:0;animation:fade 1.2s ease forwards .3s}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes fade{to{opacity:.4}}
+
+  /* mark grid */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:48px;background:var(--hair);border:1px solid var(--hair)}
+  .cell{background:var(--paper);padding:54px 30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;min-height:240px}
+  .cell.ink{background:var(--indigo)}
+  .cell.blk{background:var(--indigo-deep)}
+  .cell .cap{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+  .cell.ink .cap,.cell.blk .cap{color:rgba(244,240,230,.45)}
+  .mk-md{width:70px}.mk-lg{width:90px}
+
+  /* lockups */
+  .lk-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:48px;background:var(--hair);border:1px solid var(--hair)}
+  .lk{background:var(--paper);padding:60px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;min-height:260px}
+  .lk.ink{background:var(--indigo)}
+  .lk .cap{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+  .lk.ink .cap{color:rgba(244,240,230,.45)}
+  .stack{display:flex;flex-direction:column;align-items:center;gap:20px}
+  .wm{font-family:'Spectral',serif;text-align:center;line-height:1}
+  .wm .l1{display:block;font-weight:300;font-size:10.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--faint)}
+  .wm .l2{display:block;font-weight:300;font-size:25px;letter-spacing:.04em;margin-top:9px;color:inherit}
+  .ink .wm .l2{color:var(--cream)} .ink .wm .l1{color:rgba(244,240,230,.5)}
+  .hrz{display:flex;align-items:center;gap:20px}
+  .hrz .bar{width:1px;height:46px;background:currentColor;opacity:.2}
+  .hrz .wmh{font-family:'Spectral',serif;line-height:1.1;text-align:left}
+  .hrz .wmh .a{display:block;font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--faint)}
+  .hrz .wmh .b{display:block;font-size:19px;font-weight:300;letter-spacing:.03em;margin-top:5px}
+
+  /* palette */
+  .pal{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+  .sw .chip{height:88px;border-radius:3px;border:1px solid var(--hair)}
+  .sw .nm{font-size:13px;font-weight:500;margin-top:14px}
+  .sw .hx{font-size:11.5px;color:var(--faint);letter-spacing:.05em;margin-top:2px}
+  .sw .rl{font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.5}
+
+  /* type */
+  .trow{padding:28px 0;border-top:1px solid var(--hair)}.trow:first-of-type{border-top:0}
+  .lab{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+  .sp-d{font-family:'Spectral',serif;font-weight:200;font-size:clamp(26px,4vw,42px);letter-spacing:-.01em;line-height:1.08}
+  .sp-d em{font-style:italic;font-weight:300}
+  .sp-b{font-size:15px;color:var(--muted);max-width:60ch;line-height:1.65}
+  .sp-c{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint)}
+  .tnote{font-size:12.5px;color:var(--faint);margin-top:8px}
+
+  /* axis motif */
+  .motif{margin-top:44px;border:1px solid var(--hair);border-radius:4px;background:var(--paper);overflow:hidden}
+  .motif svg{display:block;width:100%;height:140px}
+
+  /* scale */
+  .scale{display:flex;align-items:flex-end;gap:30px;margin-top:48px;flex-wrap:wrap}
+  .sc{display:flex;flex-direction:column;align-items:center;gap:10px}
+  .sc .px{font-size:9.5px;letter-spacing:.1em;color:var(--faint)}
+  .sc .bx{border:1px solid var(--hair);border-radius:3px;display:flex;align-items:center;justify-content:center;background:var(--paper)}
+
+  /* rules */
+  .rules{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
+  .rl-col h4{font-size:10px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:18px}
+  .rl-col.do h4{color:var(--brass)} .rl-col.dont h4{color:#B5705F}
+  .rl-col li{list-style:none;font-size:13.5px;color:var(--muted);padding:8px 0 8px 18px;position:relative;line-height:1.5}
+  .rl-col li::before{content:"";position:absolute;left:0;top:13px;width:8px;height:1px;background:var(--faint)}
+
+  footer{padding:64px 0 90px;border-top:1px solid var(--hair);color:var(--faint);font-size:12px}
+  footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;letter-spacing:.04em}
+
+  @media(max-width:780px){
+    .grid,.pal{grid-template-columns:1fr 1fr}
+    .lk-grid,.rules{grid-template-columns:1fr}
+    .wrap{padding:0 26px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .anim .s1,.anim .s2{animation:none;stroke-dashoffset:0}
+    .anim .ax{animation:none;opacity:.4}
+  }
+</style>
+</head>
+<body>
+
+<!-- =============== HERO =============== -->
+<div class="hero">
+  <div class="wrap">
+    <div class="mk anim">
+      <!-- Primary mark: minimal double helix on a brass axis.
+           Heavier line = human (lead). Lighter line set back = AI (tool).
+           Brass axis = the measure running underneath. -->
+      <svg viewBox="0 0 160 240" width="100%">
+        <line class="ax" x1="72" y1="22" x2="72" y2="218" stroke="#B89B5E" stroke-width="1"/>
+        <line class="ax" x1="88" y1="22" x2="88" y2="218" stroke="#B89B5E" stroke-width="1"/>
+        <path class="s2" pathLength="100" d="M80,64 C58,74 58,90 80,101.3 C102,112 102,128 80,138.7 C58,149 58,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="4" stroke-linecap="round" opacity=".45"/>
+        <path class="s1" pathLength="100" d="M80,64 C102,74 102,90 80,101.3 C58,112 58,128 80,138.7 C102,149 102,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="name serif">The <em>Custom</em> Music Company</div>
+    <div class="tag">Composed by musicians · Delivered without the wait</div>
+  </div>
+</div>
+
+<!-- =============== THE MARK =============== -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">The mark</span>
+    <h2 class="st serif">A single strand, drawn with restraint.</h2>
+    <p class="lede">Two lines woven into a double helix. The heavier line leads, the lighter line follows, the brass axis measures. The whole identity is built from this one quiet gesture and the space around it.</p>
+
+    <div class="grid">
+      <div class="cell"><div class="mk-lg">
+        <svg viewBox="0 0 160 240">
+          <path d="M80,64 C58,74 58,90 80,101.3 C102,112 102,128 80,138.7 C58,149 58,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="4" stroke-linecap="round" opacity=".45"/>
+          <path d="M80,64 C102,74 102,90 80,101.3 C58,112 58,128 80,138.7 C102,149 102,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="5" stroke-linecap="round"/>
+        </svg></div><span class="cap">Primary · clean</span></div>
+
+      <div class="cell"><div class="mk-lg">
+        <svg viewBox="0 0 160 240">
+          <line x1="72" y1="22" x2="72" y2="218" stroke="#B89B5E" stroke-width="1" opacity=".4"/>
+          <line x1="88" y1="22" x2="88" y2="218" stroke="#B89B5E" stroke-width="1" opacity=".4"/>
+          <path d="M80,64 C58,74 58,90 80,101.3 C102,112 102,128 80,138.7 C58,149 58,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="4" stroke-linecap="round" opacity=".45"/>
+          <path d="M80,64 C102,74 102,90 80,101.3 C58,112 58,128 80,138.7 C102,149 102,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="5" stroke-linecap="round"/>
+        </svg></div><span class="cap">Signature · with axis</span></div>
+
+      <div class="cell ink"><div class="mk-lg">
+        <svg viewBox="0 0 160 240">
+          <line x1="72" y1="22" x2="72" y2="218" stroke="#B89B5E" stroke-width="1" opacity=".55"/>
+          <line x1="88" y1="22" x2="88" y2="218" stroke="#B89B5E" stroke-width="1" opacity=".55"/>
+          <path d="M80,64 C58,74 58,90 80,101.3 C102,112 102,128 80,138.7 C58,149 58,165 80,176" fill="none" stroke="#F4F0E6" stroke-width="4" stroke-linecap="round" opacity=".5"/>
+          <path d="M80,64 C102,74 102,90 80,101.3 C58,112 58,128 80,138.7 C102,149 102,165 80,176" fill="none" stroke="#F4F0E6" stroke-width="5" stroke-linecap="round"/>
+        </svg></div><span class="cap">Inverse · on indigo</span></div>
+
+      <div class="cell"><div class="mk-md">
+        <svg viewBox="0 0 160 240">
+          <path d="M80,64 C58,74 58,90 80,101.3 C102,112 102,128 80,138.7 C58,149 58,165 80,176" fill="none" stroke="#14162B" stroke-width="4" stroke-linecap="round" opacity=".45"/>
+          <path d="M80,64 C102,74 102,90 80,101.3 C58,112 58,128 80,138.7 C102,149 102,165 80,176" fill="none" stroke="#14162B" stroke-width="5" stroke-linecap="round"/>
+        </svg></div><span class="cap">Mono · black</span></div>
+
+      <div class="cell blk"><div class="mk-md">
+        <svg viewBox="0 0 160 240">
+          <path d="M80,64 C58,74 58,90 80,101.3 C102,112 102,128 80,138.7 C58,149 58,165 80,176" fill="none" stroke="#F4F0E6" stroke-width="4" stroke-linecap="round" opacity=".5"/>
+          <path d="M80,64 C102,74 102,90 80,101.3 C58,112 58,128 80,138.7 C102,149 102,165 80,176" fill="none" stroke="#F4F0E6" stroke-width="5" stroke-linecap="round"/>
+        </svg></div><span class="cap">Mono · white</span></div>
+
+      <div class="cell"><div class="mk-lg">
+        <svg viewBox="0 0 160 240">
+          <line x1="72" y1="18" x2="72" y2="222" stroke="rgba(20,22,43,.12)" stroke-width="1"/>
+          <line x1="88" y1="18" x2="88" y2="222" stroke="rgba(20,22,43,.12)" stroke-width="1"/>
+          <line x1="80" y1="18" x2="80" y2="222" stroke="rgba(184,155,94,.4)" stroke-width="1" stroke-dasharray="2 5"/>
+          <circle cx="80" cy="64" r="2" fill="rgba(20,22,43,.3)"/><circle cx="80" cy="101.3" r="2" fill="rgba(20,22,43,.3)"/><circle cx="80" cy="138.7" r="2" fill="rgba(20,22,43,.3)"/><circle cx="80" cy="176" r="2" fill="rgba(20,22,43,.3)"/>
+          <path d="M80,64 C58,74 58,90 80,101.3 C102,112 102,128 80,138.7 C58,149 58,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="2.5" stroke-linecap="round" opacity=".5"/>
+          <path d="M80,64 C102,74 102,90 80,101.3 C58,112 58,128 80,138.7 C102,149 102,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="3" stroke-linecap="round"/>
+        </svg></div><span class="cap">Construction</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== LOCKUPS =============== -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Lock-ups</span>
+    <h2 class="st serif">Four arrangements.</h2>
+    <div class="lk-grid">
+      <div class="lk">
+        <div class="stack">
+          <div style="width:54px"><svg viewBox="0 0 160 240">
+            <path d="M80,64 C58,74 58,90 80,101.3 C102,112 102,128 80,138.7 C58,149 58,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="4" stroke-linecap="round" opacity=".45"/>
+            <path d="M80,64 C102,74 102,90 80,101.3 C58,112 58,128 80,138.7 C102,149 102,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="5" stroke-linecap="round"/>
+          </svg></div>
+          <div class="wm"><span class="l1">The Custom</span><span class="l2">Music Company</span></div>
+        </div>
+        <span class="cap">Primary · stacked</span>
+      </div>
+
+      <div class="lk ink">
+        <div class="hrz" style="color:var(--cream)">
+          <div style="width:38px"><svg viewBox="0 0 160 240">
+            <path d="M80,64 C58,74 58,90 80,101.3 C102,112 102,128 80,138.7 C58,149 58,165 80,176" fill="none" stroke="#B89B5E" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+            <path d="M80,64 C102,74 102,90 80,101.3 C58,112 58,128 80,138.7 C102,149 102,165 80,176" fill="none" stroke="#F4F0E6" stroke-width="5" stroke-linecap="round"/>
+          </svg></div>
+          <div class="bar"></div>
+          <div class="wmh"><span class="a">The Custom</span><span class="b">Music Company</span></div>
+        </div>
+        <span class="cap">Horizontal · inverse</span>
+      </div>
+
+      <div class="lk">
+        <div style="border:1px solid var(--hair);border-radius:50%;width:104px;height:104px;display:flex;align-items:center;justify-content:center">
+          <div style="width:46px"><svg viewBox="0 0 160 240">
+            <path d="M80,64 C58,74 58,90 80,101.3 C102,112 102,128 80,138.7 C58,149 58,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="4.5" stroke-linecap="round" opacity=".45"/>
+            <path d="M80,64 C102,74 102,90 80,101.3 C58,112 58,128 80,138.7 C102,149 102,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="5.5" stroke-linecap="round"/>
+          </svg></div>
+        </div>
+        <span class="cap">Avatar</span>
+      </div>
+
+      <div class="lk">
+        <div class="serif" style="font-weight:300;font-size:38px;letter-spacing:.08em;color:var(--ink)">tcmc</div>
+        <span class="cap">Wordmark · short form</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== PALETTE =============== -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Palette</span>
+    <h2 class="st serif">Three tones, held quietly.</h2>
+    <div class="pal">
+      <div class="sw"><div class="chip" style="background:#1B1F3B"></div><div class="nm">Indigo</div><div class="hx">#1B1F3B</div><div class="rl">Ink and inverse grounds. The studio.</div></div>
+      <div class="sw"><div class="chip" style="background:#FBFAF7"></div><div class="nm">Paper</div><div class="hx">#FBFAF7</div><div class="rl">The ground almost everything sits on.</div></div>
+      <div class="sw"><div class="chip" style="background:#B89B5E"></div><div class="nm">Brass</div><div class="hx">#B89B5E</div><div class="rl">Hairlines and the axis only. The single accent.</div></div>
+    </div>
+    <p class="tnote" style="margin-top:24px">Supporting: Cream #F4F0E6 · Indigo Deep #14162B. Brass never exceeds a hairline.</p>
+  </div>
+</section>
+
+<!-- =============== TYPE =============== -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Typography</span>
+    <h2 class="st serif">Spectral, set light. Inter, set quiet.</h2>
+    <div class="trow"><div class="lab">Display · Spectral 200</div><div class="sp-d serif">Sound that <em>becomes</em> a brand.</div></div>
+    <div class="trow"><div class="lab">Body · Inter</div><div class="sp-b">A team of composers, producers, and engineers builds original music around your brand. AI sits in the workflow to cut the round trips, so the work arrives in days, with the hand still on it.</div></div>
+    <div class="trow"><div class="lab">Caption · Inter · tracked</div><div class="sp-c">Sonic branding · Brand DNA sound · Music &amp; BGM</div></div>
+    <p class="tnote">Free from Google Fonts. Upgrade path: Canela for display, Söhne for system.</p>
+  </div>
+</section>
+
+<!-- =============== MOTIF =============== -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Motif</span>
+    <h2 class="st serif">The axis, extended.</h2>
+    <p class="lede">The brass axis lines become the connective system across the brand: a quiet vertical rhythm for dividers, page margins, and the hold-music of a loading state.</p>
+    <div class="motif">
+      <svg viewBox="0 0 600 140" preserveAspectRatio="none">
+        <g stroke="#B89B5E" stroke-width="1" opacity=".35">
+          <line x1="60" y1="20" x2="60" y2="120"/><line x1="120" y1="20" x2="120" y2="120"/><line x1="180" y1="20" x2="180" y2="120"/><line x1="240" y1="20" x2="240" y2="120"/><line x1="300" y1="20" x2="300" y2="120"/><line x1="360" y1="20" x2="360" y2="120"/><line x1="420" y1="20" x2="420" y2="120"/><line x1="480" y1="20" x2="480" y2="120"/><line x1="540" y1="20" x2="540" y2="120"/>
+        </g>
+        <path d="M300,40 C285,52 285,68 300,80 C315,92 315,108 300,120" fill="none" stroke="#1B1F3B" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M300,40 C315,52 315,68 300,80 C285,92 285,108 300,120" fill="none" stroke="#1B1F3B" stroke-width="2.5" stroke-linecap="round" opacity=".45"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SCALE =============== -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Scale</span>
+    <h2 class="st serif">It holds down to a favicon.</h2>
+    <div class="scale">
+      <div class="sc"><div class="bx" style="width:16px;height:24px;padding:2px"><svg viewBox="0 0 160 240" width="12"><path d="M80,64 C58,74 58,90 80,101.3 C102,112 102,128 80,138.7 C58,149 58,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="8" stroke-linecap="round"/><path d="M80,64 C102,74 102,90 80,101.3 C58,112 58,128 80,138.7 C102,149 102,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="9" stroke-linecap="round"/></svg></div><span class="px">16</span></div>
+      <div class="sc"><div class="bx" style="width:24px;height:34px;padding:3px"><svg viewBox="0 0 160 240" width="18"><path d="M80,64 C58,74 58,90 80,101.3 C102,112 102,128 80,138.7 C58,149 58,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="6" stroke-linecap="round" opacity=".5"/><path d="M80,64 C102,74 102,90 80,101.3 C58,112 58,128 80,138.7 C102,149 102,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="7" stroke-linecap="round"/></svg></div><span class="px">24</span></div>
+      <div class="sc"><div class="bx" style="width:34px;height:46px;padding:5px"><svg viewBox="0 0 160 240" width="24"><path d="M80,64 C58,74 58,90 80,101.3 C102,112 102,128 80,138.7 C58,149 58,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="5" stroke-linecap="round" opacity=".45"/><path d="M80,64 C102,74 102,90 80,101.3 C58,112 58,128 80,138.7 C102,149 102,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="6" stroke-linecap="round"/></svg></div><span class="px">32</span></div>
+      <div class="sc"><div class="bx" style="width:48px;height:64px;padding:8px"><svg viewBox="0 0 160 240" width="32"><path d="M80,64 C58,74 58,90 80,101.3 C102,112 102,128 80,138.7 C58,149 58,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="4.5" stroke-linecap="round" opacity=".45"/><path d="M80,64 C102,74 102,90 80,101.3 C58,112 58,128 80,138.7 C102,149 102,165 80,176" fill="none" stroke="#1B1F3B" stroke-width="5.5" stroke-linecap="round"/></svg></div><span class="px">48</span></div>
+    </div>
+    <p class="tnote" style="margin-top:24px">Below 24px the axis and weight contrast drop away; the bare helix carries it.</p>
+  </div>
+</section>
+
+<!-- =============== USAGE =============== -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Usage</span>
+    <h2 class="st serif">Protect the quiet.</h2>
+    <div class="rules">
+      <div class="rl-col do"><h4>Do</h4><ul>
+        <li>Keep the lines thin and the space around the mark generous.</li>
+        <li>Hold the weight contrast: heavier line leads, lighter line follows.</li>
+        <li>Use brass only as hairline and axis, never as a fill.</li>
+        <li>Default to paper and indigo grounds; let layouts breathe.</li>
+      </ul></div>
+      <div class="rl-col dont"><h4>Don't</h4><ul>
+        <li>Thicken the strokes into a bold or filled mark.</li>
+        <li>Add the play, record, or rung elements back in.</li>
+        <li>Introduce a third colour, gradients, or shadows.</li>
+        <li>Crowd the mark or pair it with any font but Spectral and Inter.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><div class="row">
+    <span>The Custom Music Company · Identity · Minimal Helix</span>
+    <span>Raja, CEO · Sahir, Music Director</span>
+  </div></div>
+</footer>
+
+</body>
+</html>
