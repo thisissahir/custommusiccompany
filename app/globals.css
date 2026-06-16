@@ -1,0 +1,159 @@
+/* The Custom Music Company — design tokens + base.
+   Ported from the TCMC design system (tokens/colors, typography, spacing). */
+
+:root {
+  /* ---- Base palette ---- */
+  --tcmc-indigo: #1B1F3B;       /* primary ink + inverse ground — "the studio" */
+  --tcmc-indigo-deep: #14162B;  /* deepest ground */
+  --tcmc-cream: #F4F0E6;        /* warm light on indigo */
+  --tcmc-paper: #FBFAF7;        /* the ground almost everything sits on */
+  --tcmc-brass: #B89B5E;        /* single accent — hairlines + axis ONLY, never a fill */
+
+  /* ---- Ink scale (indigo at decreasing opacity) ---- */
+  --tcmc-ink: #1B1F3B;
+  --tcmc-muted: rgba(20, 22, 43, 0.5);
+  --tcmc-faint: rgba(20, 22, 43, 0.38);
+  --tcmc-hair: rgba(20, 22, 43, 0.10);
+  --tcmc-hair-2: rgba(20, 22, 43, 0.06);
+
+  /* ---- Cream scale (for use on indigo grounds) ---- */
+  --tcmc-on-ink: var(--tcmc-cream);
+  --tcmc-on-ink-muted: rgba(244, 240, 230, 0.55);
+  --tcmc-on-ink-faint: rgba(244, 240, 230, 0.40);
+  --tcmc-on-ink-hair: rgba(244, 240, 230, 0.14);
+
+  /* ---- Brass at hairline opacities (accent only) ---- */
+  --tcmc-brass-axis: rgba(184, 155, 94, 0.40);
+  --tcmc-brass-strong: rgba(184, 155, 94, 0.70);
+
+  /* ---- Semantic aliases ---- */
+  --surface-page: var(--tcmc-paper);
+  --surface-card: var(--tcmc-paper);
+  --surface-sunken: var(--tcmc-hair-2);
+  --surface-ink: var(--tcmc-indigo);
+  --surface-ink-deep: var(--tcmc-indigo-deep);
+
+  --text-heading: var(--tcmc-ink);
+  --text-body: var(--tcmc-muted);
+  --text-caption: var(--tcmc-faint);
+  --text-on-ink: var(--tcmc-cream);
+  --text-on-ink-muted: var(--tcmc-on-ink-muted);
+
+  --border-hair: var(--tcmc-hair);
+  --border-hair-faint: var(--tcmc-hair-2);
+  --border-on-ink: var(--tcmc-on-ink-hair);
+
+  --accent: var(--tcmc-brass);
+  --accent-axis: var(--tcmc-brass-axis);
+
+  /* ---- Families ---- */
+  --font-serif: "Spectral", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* ---- Weights ---- */
+  --weight-display: 200;
+  --weight-serif: 300;
+  --weight-serif-med: 500;
+  --weight-body: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* ---- Type scale ---- */
+  --text-hero: clamp(28px, 5vw, 46px);
+  --text-display: clamp(26px, 4vw, 42px);
+  --text-title: clamp(22px, 3.2vw, 32px);
+  --text-h3: 20px;
+  --text-lede: 15px;
+  --text-body-size: 14.5px;
+  --text-small: 13px;
+  --text-caption-size: 11px;
+  --text-eyebrow: 10.5px;
+
+  /* ---- Line heights ---- */
+  --lh-tight: 1.08;
+  --lh-snug: 1.2;
+  --lh-body: 1.6;
+  --lh-relaxed: 1.65;
+
+  /* ---- Tracking ---- */
+  --track-display: -0.01em;
+  --track-body: 0;
+  --track-eyebrow: 0.36em;
+  --track-caption: 0.26em;
+  --track-label: 0.2em;
+
+  /* ---- Spacing scale ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 130px;
+
+  /* ---- Layout ---- */
+  --measure: 54ch;
+  --measure-body: 60ch;
+  --container: 980px;
+  --container-wide: 1200px;
+  --page-gutter: 40px;
+
+  /* ---- Radii ---- */
+  --radius-xs: 3px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-round: 50%;
+
+  /* ---- Borders ---- */
+  --border-width: 1px;
+
+  /* ---- Shadows ---- */
+  --shadow-none: none;
+  --shadow-float: 0 8px 30px rgba(20, 22, 43, 0.08);
+  --shadow-float-lg: 0 18px 50px rgba(20, 22, 43, 0.12);
+
+  /* ---- Motion ---- */
+  --ease-draw: cubic-bezier(0.65, 0, 0.2, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 160ms;
+  --dur-base: 280ms;
+  --dur-slow: 600ms;
+  --dur-draw: 1700ms;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--surface-page);
+  color: var(--tcmc-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.55;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+
+/* logo stroke draw-on, honoring reduced motion */
+@keyframes tcmc-draw { to { stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Responsive: collapse the fixed two-column grids on small screens. */
+@media (max-width: 720px) {
+  .tcmc-about-helix { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .tcmc-brief-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+  .tcmc-name-row { grid-template-columns: 1fr !important; }
+}
+
+/* Header gutter narrows on small screens to match the brand's breathing room. */
+@media (max-width: 560px) {
+  header { padding-left: 24px !important; padding-right: 24px !important; }
+}
